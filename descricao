@@ -1,0 +1,21 @@
+-- Site para a Farmácia Botica
+Trata-se de um site para divulgação dos produtos da farmácia botica, bem como informações para contato e a história da farmácia.
+
+-- Funcionalidades:
+
+# Admin
+- Cadastrar produtos (nome do produto, imagem do produto, descrição do produto, doenças que o produto age na prevenção ou no tratamento, tipo do produto)
+- Editar produtos (todos os campos do produto)
+- Remover produtos
+- Cadastrar enfermidades
+- Editar enfermidades
+- Excluir enfermidades
+- Cadastrar tipos de produtos
+- Editar tipos de produtos
+- Excluir tipos de produtos
+
+#Usuário
+-> Página Inicial (contendo um resumo sobre o estabelecimento)
+-> Página de listagem de produtos (por tipo (floral, cosmético, fitoterápico...)
+-> Buscar por enfermidade
+-> Buscar por nome

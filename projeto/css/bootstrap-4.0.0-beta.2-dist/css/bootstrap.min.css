@@ -50,3 +50,31 @@ fieldset[disabled] .btn-botica.active {
   color: #DEEFE5; 
   background-color: #0F512D; 
 }
+
+navbar-custom {
+    background-color: #9EC4B0;
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: #11542b;
+}
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #328450;
+}
+
+.card-title {
+	background-color: #dcebe2;
+	color: #11542b; 
+}
+
+.title-box {
+	background-color: #dcebe2;
+	color: #11542b; 
+}
+
+body {
+	font-family: 'Didact Gothic', sans-serif;
+}

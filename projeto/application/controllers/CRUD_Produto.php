@@ -18,11 +18,21 @@ class CRUD_Produto extends CI_Controller {
 	}
 
 	public function create() {
-		$this->load->view('View_Usuario');
+		$dados = array(
+			'titulo' => 'Cadastro de Produto',
+			'tela' => 'create_produto',
+		);
+
+		$this->load->view('View_Usuario',$dados);
 	}
 
 	public function retrieve() {
+		$dados = array(
+			'titulo' => 'Lista de Produtos',
+			'tela' => 'retrieve_produto',
+		);
 
+		$this->load->view('View_Usuario',$dados);
 	}
 
 	public function update() {

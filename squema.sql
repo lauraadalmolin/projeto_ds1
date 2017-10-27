@@ -33,4 +33,6 @@ CREATE TABLE informacoes (
 	texto_historia TEXT
 );
 
+
+
 INSERT INTO usuarios VALUES (DEFAULT, 'admin', 'a0df75a1872e12557f01b5670b3a9550');

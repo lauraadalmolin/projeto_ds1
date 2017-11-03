@@ -6,9 +6,12 @@ class Categoria_model extends CI_Model{
 		if($dados!=NULL):
 			$this->db->insert('categorias',$dados);
 			$id = $this->db->insert_id();
-			$this->session->set_flashdata('cadastrook','Categoria cadastrada com sucesso!');
 			return $id;
 		endif;
+	}
+
+	public function get_all() {
+		return $this->db->get('categorias');
 	}
 
 	

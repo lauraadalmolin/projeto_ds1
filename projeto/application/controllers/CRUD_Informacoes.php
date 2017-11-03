@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class CRUD_Indicacao extends CI_Controller {
+class CRUD_Informacoes extends CI_Controller {
 
 	public function __CONSTRUCT(){
 		parent::__CONSTRUCT();
@@ -15,19 +15,10 @@ class CRUD_Indicacao extends CI_Controller {
 		$this->load->helper('file');
 	}
 
-	public function create() {
-		$dados = array(
-			'titulo' => 'Cadastro de Indicação',
-			'tela' => 'create_indicacao',
-		);
-
-		$this->load->view('View_Usuario',$dados);
-	}
-
 	public function retrieve() {
 		$dados = array(
-			'titulo' => 'Lista de Indicações',
-			'tela' => 'retrieve_indicacao',
+			'titulo' => 'Home',
+			'tela' => 'home',
 		);
 
 		$this->load->view('View_Usuario',$dados);

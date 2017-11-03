@@ -10,8 +10,11 @@ echo     "<h6>Cadastrar Indicação</h6>";
 echo "</div>";
 echo "<div class='card-body'>";
     echo form_open('CRUD_Indicacao/create');
-    if ($this->session->flashdata('cadastrook')):
-        echo "<p class='success'>".$this->session->flashdata('cadastrook').'</p>';
+    if ($this->session->flashdata('sucesso')):
+        echo "<p class='alert alert-success'>".$this->session->flashdata('sucesso').'</p>';
+    endif;
+    if ($this->session->flashdata('erro')):
+        echo "<p class='alert alert-danger'>".$this->session->flashdata('erro').'</p>';
     endif;
     echo form_label('Nome: ');
     echo "<br>";

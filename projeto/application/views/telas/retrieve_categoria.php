@@ -1,60 +1,35 @@
 <?php
+if ($this->session->userdata('logado') == true) {
 // falta o teste da sessão...
 echo "<br>";
 echo "<div class='container-fluid'>";
 echo 	"<div class='row align-items-center justify-content-center'>";
-echo 		"<div class='col-md-11'>";
+echo 		"<div class='col-md-10'>";
 echo 			"<div class='card'>";
 echo 				"<div class='card-header card-title'>";
 echo 					"<h6>Categorias</h6>";
 echo 				"</div>";
 echo 				"<div class='card-body'>";
 echo 					"<div class='row'>";
+foreach ($categorias as $categoria) {
 echo 					"<div class='col-md-4'>";
-echo 					"<div class='card' style='width: 20rem;'>";
-echo 						"<img class='card-img-top' src='../images/fitos.jpg' alt='Card image cap'>";
+echo 					"<div class='card'>";
+echo 						"<img class='card-img-top' src='../uploads/categorias/" . $categoria->id . ".jpg' alt='Card image cap'>";
 echo   						"<div class='card-body'>";
-echo  		   					"<h5 class='card-title text-center'>Fitoterápicos</h5>";
-echo  		   						"<p class='card-text text-justify'>Um medicamento fitoterápico é aquele alcançado de plantas medicinais, onde utiliza-se exclusivamente derivados de droga vegetal tais como: suco, cera, exsudato, óleo, extrato, tintura, entre outros. O termo confunde-se com fitoterapia ou com planta medicinal que realmente envolve o vegetal como um todo no exercício curativo e/ou profilático.</p>";
+echo  		   					"<h5 class='card-title text-center'>" . $categoria->nome . "</h5>";
+echo  		   						"<p class='card-text text-justify'>" . $categoria->descricao . "</p>";
 echo 							"<div class='text-right'>";
-echo 							"<a href='link...'><img src='../images/icons/edit1_gray.png'>";
+echo 							"<a href='CRUD_Categoria/update/". $categoria->id ."'><img src='../images/icons/edit1_gray.png'>";
 echo 							"</img></a>";
-echo 							"<a href='link...'><img src='../images/icons/delete1_gray.png'>";
+echo 							"<a href='CRUD_Categoria/delete/". $categoria->id ."'><img src='../images/icons/delete1_gray.png'>";
 echo 							"</img></a>";
 echo 							"</div>";
 echo 					"</div></div>";
 echo 				"</div>";
-echo 					"<div class='col-md-4'>";
-echo 					"<div class='card' style='width: 20rem;'>";
-echo 						"<img class='card-img-top' src='../images/fitos.jpg' alt='Card image cap'>";
-echo   						"<div class='card-body'>";
-echo  		   					"<h5 class='card-title text-center'>Fitoterápicos</h5>";
-echo  		   						"<p class='card-text text-justify'>Um medicamento fitoterápico é aquele alcançado de plantas medicinais, onde utiliza-se exclusivamente derivados de droga vegetal tais como: suco, cera, exsudato, óleo, extrato, tintura, entre outros. O termo confunde-se com fitoterapia ou com planta medicinal que realmente envolve o vegetal como um todo no exercício curativo e/ou profilático.</p>";
-echo 							"<div class='text-right'>";
-echo 							"<a href='link...'><img src='../images/icons/edit1_gray.png'>";
-echo 							"</img></a>";
-echo 							"<a href='link...'><img src='../images/icons/delete1_gray.png'>";
-echo 							"</img></a>";
-echo 							"</div>";
-echo 					"</div></div>";
-echo 				"</div>";
-echo 					"<div class='col-md-4'>";
-echo 					"<div class='card' style='width: 20rem;'>";
-echo 						"<img class='card-img-top' src='../images/fitos.jpg' alt='Card image cap'>";
-echo   						"<div class='card-body'>";
-echo  		   					"<h5 class='card-title text-center'>Fitoterápicos</h5>";
-echo  		   						"<p class='card-text text-justify'>Um medicamento fitoterápico é aquele alcançado de plantas medicinais, onde utiliza-se exclusivamente derivados de droga vegetal tais como: suco, cera, exsudato, óleo, extrato, tintura, entre outros. O termo confunde-se com fitoterapia ou com planta medicinal que realmente envolve o vegetal como um todo no exercício curativo e/ou profilático.</p>";
-echo 							"<div class='text-right'>";
-echo 							"<a href='link...'><img src='../images/icons/edit1_gray.png'>";
-echo 							"</img></a>";
-echo 							"<a href='link...'><img src='../images/icons/delete1_gray.png'>";
-echo 							"</img></a>";
-echo 							"</div>";
-echo 					"</div></div>";
-echo 				"</div>";
-
+}
 echo 				"</div>";
 echo 				"</div>";
 echo 			"</div>";
 echo 		"</div>";
 echo "</div>";
+}

@@ -9,15 +9,17 @@
     <ul class="navbar-nav mr-auto" >
         <?php 
 		if ($this->session->userdata('logado') == true) {
-      echo "<li class='nav-item'>" . anchor('CRUD_Informacoes/create','Home', array('class' => 'nav-link')) . "</li>"; 
+      echo "<li class='nav-item'>" . anchor('CRUD_Informacoes/retrieve','Home', array('class' => 'nav-link')) . "</li>"; 
       echo "<li class='nav-item'>" . anchor('CRUD_Produto/create','Criar Produto', array('class' => 'nav-link')) . "</li>"; 
       echo "<li class='nav-item'>" . anchor('CRUD_Produto/retrieve','Listar Produtos', array('class' => 'nav-link')) . "</li>";
       echo "<li class='nav-item'>" . anchor('CRUD_Indicacao/create','Criar Indicação', array('class' => 'nav-link')) . "</li>"; 
       echo "<li class='nav-item'>" . anchor('CRUD_Indicacao/retrieve','Listar Indicações', array('class' => 'nav-link')) . "</li>";
 			echo "<li class='nav-item'>" . anchor('CRUD_Categoria/create','Criar Categoria', array('class' => 'nav-link')) . "</li>"; 
 			echo "<li class='nav-item'>" . anchor('CRUD_Categoria/retrieve','Listar Categorias', array('class' => 'nav-link')) . "</li>";
-			echo "<li class='nav-item'>" . anchor('Login_Logout/logout','Logout', array('class' => 'nav-link')) . "</li>";  	
+			echo "<li class='nav-item'>" . anchor('Login_Logout/logout','Sair', array('class' => 'nav-link')) . "</li>";  	
 		} else {
+      echo "<li class='nav-item'>" . anchor('CRUD_Informacoes/retrieve','Home', array('class' => 'nav-link')) . "</li>"; 
+      echo "<li class='nav-item'>" . anchor('CRUD_Produto/retrieve','Produtos', array('class' => 'nav-link')) . "</li>";
 			echo "<li class='nav-item'>" . anchor('Login_Logout/tela_login','Login', array('class' => 'nav-link')) . "</li>"; 
 		}
     	?>

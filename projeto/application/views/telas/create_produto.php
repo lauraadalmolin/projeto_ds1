@@ -10,8 +10,8 @@ echo     "<h6>Cadastrar Produto</h6>";
 echo "</div>";
 echo "<div class='card-body'>";
     echo form_open_multipart('CRUD_Produto/create');
-    if ($this->session->flashdata('cadastrook')):
-        echo "<p class='success'>".$this->session->flashdata('cadastrook').'</p>';
+    if ($this->session->flashdata('sucesso')):
+        echo "<p class='alert alert-success'>".$this->session->flashdata('sucesso').'</p>';
     endif;
     echo form_label('Nome: ');
     echo "<br>";
@@ -25,26 +25,19 @@ echo "<div class='card-body'>";
     echo "<input type='file' name='foto' accept='image/*'>";
     echo "<br>";
     echo "<br>";
+    echo "<p>Categoria do produto</option></p>";
+    echo "<select class='custom-select' name='id_categoria'>";
+    foreach ($categorias as $categoria) {
+    echo    "<option value='".$categoria->id."' selected>".$categoria->nome."</option>";
+    }
+    echo "</select>";
+    echo "<br>";
+    echo "<br>";
     echo "<p>Indicações do produto (pressione Ctrl para mais de uma)</option></p>";
-    echo "<select multiple class='custom-select'>";
-    echo    "<option value='1' selected>One</option>";
-    echo    "<option value='2'>Two</option>";
-    echo    "<option value='3'>Three</option>";
-    echo    "<option value='3'>Three</option>";
-    echo    "<option value='3'>Three</option>";
-    echo    "<option value='3'>Three</option>";
-    echo    "<option value='3'>Three</option>";
-    echo    "<option value='3'>Three</option>";
-    echo    "<option value='3'>Three</option>";
-    echo    "<option value='3'>Three</option>";
-    echo    "<option value='3'>Three</option>";
-    echo    "<option value='3'>Three</option>";
-    echo    "<option value='3'>Three</option>";
-    echo    "<option value='3'>Three</option>";
-    echo    "<option value='3'>Three</option>";
-    echo    "<option value='3'>Three</option>";
-    echo    "<option value='3'>Three</option>";
-    echo    "<option value='3'>Three</option>";
+    echo "<select class='custom-select' name='indicacoes[]' multiple>";
+    foreach ($indicacoes as $indicacao) {
+        echo    "<option value='".$indicacao->id."'>".$indicacao->nome."</option>";
+    }
     echo "</select>";
     echo "<div class='text-center'>";
 

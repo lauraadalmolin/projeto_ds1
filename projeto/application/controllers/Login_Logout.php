@@ -18,7 +18,7 @@ class Login_Logout extends CI_Controller {
 	public function index() {
 		$dados = array(
 			'titulo' => 'Página Inicial',
-			'tela' => 'index',
+			'tela' => 'home',
 		);
 		$this->load->view('View_Usuario',$dados);
 	}
@@ -43,7 +43,7 @@ class Login_Logout extends CI_Controller {
 			$this->session->set_userdata('logado', true);
 			$dados = array(
 				'titulo' => 'Página Inicial',
-				'tela' => 'home_admin',
+				'tela' => 'home',
 			);
 			$this->load->view('View_Usuario',$dados);
 		} else {

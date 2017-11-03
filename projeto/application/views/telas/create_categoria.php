@@ -10,8 +10,8 @@ echo     "<h6>Cadastrar Categoria</h6>";
 echo "</div>";
 echo "<div class='card-body'>";
     echo form_open_multipart('CRUD_Categoria/create');
-    if ($this->session->flashdata('cadastrook')):
-        echo "<p class='success'>".$this->session->flashdata('cadastrook').'</p>';
+    if ($this->session->flashdata('cadastro')):
+        echo "<p class='alert alert-info'>".$this->session->flashdata('cadastro').'</p>';
     endif;
     echo form_label('Nome: ');
     echo "<br>";

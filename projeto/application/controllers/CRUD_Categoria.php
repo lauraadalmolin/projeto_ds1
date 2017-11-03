@@ -16,9 +16,10 @@ class CRUD_Categoria extends CI_Controller {
 	}
 
 	public function create() {
-		//validacao do form
+
 		$this->form_validation->set_rules('nome','TITULO','trim|required|max_length[100]|ucwords');
         $this->form_validation->set_rules('descricao','TEXTO','trim|required|max_length[800]');
+        //$this->form_validation->set_rules('foto','IMAGEM','required');
 
 		if($this->form_validation->run()==TRUE):
 					
@@ -45,9 +46,12 @@ class CRUD_Categoria extends CI_Controller {
 	}
 
 	public function retrieve() {
+
 		$dados = array(
 			'titulo' => 'Categorias',
 			'tela' => 'retrieve_categoria',
+			'categorias' => $this->Categoria_model->get_all()->result(),
+
 		);
 
 		$this->load->view('View_Usuario',$dados);

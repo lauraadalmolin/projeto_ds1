@@ -17,7 +17,7 @@ class CRUD_Indicacao extends CI_Controller {
 
 	public function create() {
 
-		$this->form_validation->set_rules('nome','TITULO','trim|required|max_length[100]|ucwords');
+		$this->form_validation->set_rules('nome','TITULO','trim|required|max_length[100]');
 
 		if($this->form_validation->run()==TRUE) {
 	        $data = elements(array('nome'), $this->input->post());
@@ -44,7 +44,7 @@ class CRUD_Indicacao extends CI_Controller {
 
 	public function retrieve() {
 		$dados = array(
-			'titulo' => 'Lista de Indicações',
+			'titulo' => 'Indicações',
 			'tela' => 'retrieve_indicacao',
 			'indicacoes' => $this->Indicacao_model->get_all()->result(),
 
@@ -58,7 +58,15 @@ class CRUD_Indicacao extends CI_Controller {
 	}
 
 	public function delete() {
-		
+		if ($this->input->get('id')>0):  
+			$this->Indicacao_model->do_delete(array('id' => $this->input->get('id')));
+		endif;
+		$dados = array(
+			'titulo' => 'Indicações',
+			'tela' => 'retrieve_indicacao',
+			'indicacoes' => $this->Indicacao_model->get_all()->result()
+		);
+		$this->load->view('View_Usuario',$dados);
 	}
 	
 

@@ -20,7 +20,7 @@ class CRUD_Produto extends CI_Controller {
 
 	public function create() {
 
-		$this->form_validation->set_rules('nome','TITULO','trim|required|max_length[100]|ucwords');
+		$this->form_validation->set_rules('nome','TITULO','trim|required|max_length[100]');
         $this->form_validation->set_rules('descricao','TEXTO','trim|required|max_length[800]');
         //$this->form_validation->set_rules('id_categoria','CATEGORIA', 'required');
         //$this->form_validation->set_rules('indicacoes', 'INDICACOES', 'required');
@@ -59,7 +59,7 @@ class CRUD_Produto extends CI_Controller {
 
 	public function retrieve() {
 		$dados = array(
-			'titulo' => 'Lista de Produtos',
+			'titulo' => 'Produtos',
 			'tela' => 'retrieve_produto',
 			'produtos' => $this->Produto_model->get_all()->result(),
 			'indicacoes' => $this->Indicacao_model->get_all()->result(),
@@ -74,7 +74,21 @@ class CRUD_Produto extends CI_Controller {
 	}
 
 	public function delete() {
-		
+		if ($this->input->get('id')>0):  
+			$diretorio = "./uploads/produtos/" . $this->input->get('id') . ".jpg";
+			if (file_exists($diretorio)) {
+				unlink($diretorio);
+			}
+			$this->Produto_model->do_delete(array('id' => $this->input->get('id')));
+		endif;
+		$dados = array(
+			'titulo' => 'Produtos',
+			'tela' => 'retrieve_produto',
+			'produtos' => $this->Produto_model->get_all()->result(),
+			'indicacoes' => $this->Indicacao_model->get_all()->result(),
+			'categorias' => $this->Categoria_model->get_all()->result()
+		);
+		$this->load->view('View_Usuario',$dados);
 	}
 	
 

@@ -19,7 +19,7 @@ echo "</ul></div>";
 echo 	"<form class='form-inline my-2 my-lg-0'>";
 echo 		"<input class='form-control mr-sm-2' type='search' placeholder='Pesquisar por indicação' aria-label='Search'>";
 echo 							"<div class='text-right'>";
-echo 							"<a href='link...'><img  src='../images/icons/search.png'>";
+echo 							"<a href='link...'><img  src='../../images/icons/search.png'>";
 echo 							"</img></a>";
 echo 							"</div>";
 echo 	"</form>";
@@ -29,14 +29,14 @@ echo 					"<div class='row'>";
 foreach ($produtos as $produto) {
 echo 					"<div class='col-md-4'>";
 echo 					"<a class='link-produtos' href='CRUD_Produto/info/".$produto->id."'><div class='card'>";
-echo 						"<img class='card-img-top' src='../uploads/categorias/".$produto->id.".jpg' alt='Card image cap'>";
+echo 						"<img class='card-img-top' src='../../uploads/produtos/".$produto->id.".jpg' alt='Card image cap'>";
 echo   						"<div class='card-body-produtos'>";
 if ($this->session->userdata('logado') == true) {
 echo  		   					"<h5 class='card-title text-center'>".$produto->nome."</h5>";
 echo 							"<div class='text-center'>";
-echo 							"<a href='CRUD_Produto/update/".$produto->id."'><img src='../images/icons/edit1_green.png'>";
+echo 							"<a href='/CRUD_Produto/update/?id=".$produto->id."'><img src='../../images/icons/edit1_green.png'>";
 echo 							"</img></a>";
-echo 							"<a href='CRUD_Produto/update/".$produto->id."'><img src='../images/icons/delete1_green.png'>";
+echo 							"<a href='/CRUD_Produto/delete/?id=".$produto->id."'><img src='../../images/icons/delete1_green.png'>";
 echo 							"</img></a>";
 echo 							"</div>";
 } else {

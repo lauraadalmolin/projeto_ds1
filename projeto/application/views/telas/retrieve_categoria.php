@@ -19,9 +19,9 @@ echo   						"<div class='card-body'>";
 echo  		   					"<h5 class='card-title text-center'>" . $categoria->nome . "</h5>";
 echo  		   						"<p class='card-text text-justify'>" . $categoria->descricao . "</p>";
 echo 							"<div class='text-right'>";
-echo 							"<a href='CRUD_Categoria/update/". $categoria->id ."'><img src='../images/icons/edit1_gray.png'>";
+echo 							"<a href='/CRUD_Categoria/update/?id=". $categoria->id ."'><img src='../images/icons/edit1_gray.png'>";
 echo 							"</img></a>";
-echo 							"<a href='CRUD_Categoria/delete/". $categoria->id ."'><img src='../images/icons/delete1_gray.png'>";
+echo 							"<a class='excluir' href='/CRUD_Categoria/delete/?id=". $categoria->id ."'><img src='../images/icons/delete1_gray.png'>";
 echo 							"</img></a>";
 echo 							"</div>";
 echo 					"</div></div>";
@@ -33,3 +33,17 @@ echo 			"</div>";
 echo 		"</div>";
 echo "</div>";
 }
+
+?>
+
+<script type="text/javascript">
+	var excluir = document.getElementsByClassName("excluir");
+	for(let i = 0; i < excluir.length; i++){
+		excluir[i].addEventListener("click", function(e){
+			if(!confirm("Deseja excluir?")){
+				e.preventDefault();
+			}
+		});
+	}
+	
+</script>

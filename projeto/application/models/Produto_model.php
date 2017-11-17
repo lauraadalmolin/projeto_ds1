@@ -24,4 +24,13 @@ class Produto_model extends CI_Model{
 		}
 	}
 	
+	public function do_delete($dados=NULL) {
+		if ($dados!=NULL) {
+			$this->db->where('id_produto', $dados['id']);
+			$this->db->delete('produto_indicacao');
+			$this->db->delete('produtos', $dados);
+		}
+	}
+
+
 }

@@ -15,5 +15,12 @@ class Indicacao_model extends CI_Model{
 		return $this->db->get('indicacoes');
 	}
 
-	
+	public function do_delete($dados=NULL) {
+		if ($dados!=NULL) {
+			$this->db->where('id_indicacao', $dados['id']);
+			$this->db->delete('produto_indicacao');
+			$this->db->delete('indicacoes', $dados);
+		}
+	}
+
 }

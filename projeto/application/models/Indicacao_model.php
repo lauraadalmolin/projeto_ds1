@@ -23,4 +23,18 @@ class Indicacao_model extends CI_Model{
 		}
 	}
 
+	public function get_byid($id) {
+		$this->db->order_by('id', 'DESC');
+		$this->db->where('id',$id);
+		$this->db->limit(1);
+		return $this->db->get('indicacoes');
+	}
+
+	public function do_update($dados=NULL,$id=NULL) {
+		if($dados!=NULL && $id!=NULL):
+			$this->db->update('indicacoes', $dados, array('id' => $id));
+			$this->session->set_flashdata('update','Atualização realizada com sucesso!');
+		endif;
+	}
+
 }

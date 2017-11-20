@@ -23,13 +23,45 @@ class Produto_model extends CI_Model{
 			}
 		}
 	}
+
+	public function get_byid($id=NULL) {
+		if ($id != NULL):
+			$this->db->order_by('id', 'DESC');
+			$this->db->where('id',$id);
+			$this->db->limit(1);
+			return $this->db->get('produtos');
+		else:
+			return FALSE;
+		endif;
+	}
+
+	public function get_indicacoes($id=NULL) {
+		if ($id != NULL) {
+			$this->db->where('id_produto', $id);
+			$this->db->select('id_indicacao');
+			return $this->db->get('produto_indicacao');
+		}
+	}
 	
+	public function delete_n2n($id) {
+		if ($id != null) {
+			$this->db->where('id_produto', $id);
+			$this->db->delete('produto_indicacao');
+		}
+	}
 	public function do_delete($dados=NULL) {
 		if ($dados!=NULL) {
 			$this->db->where('id_produto', $dados['id']);
 			$this->db->delete('produto_indicacao');
 			$this->db->delete('produtos', $dados);
 		}
+	}
+
+	public function do_update($dados=NULL,$id=NULL) {
+		if($dados!=NULL && $id!=NULL):
+			$this->db->update('produtos', $dados, array('id' => $id));
+			$this->session->set_flashdata('update','Atualização realizada com sucesso!');
+		endif;
 	}
 
 

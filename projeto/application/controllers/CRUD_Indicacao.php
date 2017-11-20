@@ -54,7 +54,21 @@ class CRUD_Indicacao extends CI_Controller {
 	}
 
 	public function update() {
-
+		$this->form_validation->set_rules('nome','TITULO','trim|required|max_length[100]');
+		if($this->form_validation->run()==TRUE) {
+			$id = $this->input->post('id');
+            $dados = elements(array('nome'), $this->input->post());
+        	$this->Indicacao_model->do_update($dados, $id);
+        	redirect("/CRUD_Indicacao/retrieve");
+        } else {
+			$dados = array(
+				'titulo' => 'CRUD &raquo; Update',
+				'tela' => 'update_indicacao',
+				'indicacao' =>
+						 $this->Indicacao_model->get_byid($this->input->get('id'))->result()
+			);
+			$this->load->view('View_Usuario',$dados);
+		}
 	}
 
 	public function delete() {

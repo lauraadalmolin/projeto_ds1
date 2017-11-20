@@ -70,7 +70,40 @@ class CRUD_Produto extends CI_Controller {
 	}
 
 	public function update() {
+		$this->form_validation->set_rules('nome','TITULO','trim|required|max_length[100]');
+        $this->form_validation->set_rules('descricao','TEXTO','trim|required|max_length[800]');
+        if($this->form_validation->run()==TRUE) {
+			$id = $this->input->post('id');
+			$config['upload_path'] = './uploads/produtos/';
+	    	$config['allowed_types'] = 'jpg';
+	    	$config['file_name'] = $id;
+	    	$config['overwrite'] = true;
+	    
+	    	$this->load->library('upload', $config);
+	    	$this->upload->do_upload('foto');
+	    	$arr = array();
+	    	foreach ($this->input->post('indicacoes[]') as $indicacao) {
+	    		$arr[] = $indicacao;
+	    	}
+	    	$this->Produto_model->delete_n2n($id);
+	    	$this->Produto_model->do_n2n($arr, $id);
+			
+            $dados = elements(array('nome','descricao', 'id_categoria'), $this->input->post());
+        	$this->Produto_model->do_update($dados, $id);
+        	redirect("/CRUD_Produto/retrieve");
+        } else {
+			$dados = array(
+				'titulo' => 'CRUD &raquo; Update',
+				'tela' => 'update_produto',
+				'arr_indicacoes' => $this->Produto_model->get_indicacoes($this->input->get('id'))->result(),
+				'produto' =>
+						 $this->Produto_model->get_byid($this->input->get('id'))->result(),
+				'indicacoes' => $this->Indicacao_model->get_all()->result(),
+				'categorias' => $this->Categoria_model->get_all()->result(),
 
+			);
+			$this->load->view('View_Usuario',$dados);
+		}
 	}
 
 	public function delete() {

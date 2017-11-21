@@ -57,12 +57,33 @@ class CRUD_Produto extends CI_Controller {
 		$this->load->view('View_Usuario',$dados);
 	}
 
+	public function search() {
+		$dados = array(
+			'titulo' => 'Cadastro de Produto',
+			'tela' => 'create_produto',
+			'indicacoes' => $this->Indicacao_model->get_all()->result(),
+			'categorias' => $this->Categoria_model->get_all()->result(),
+		);
+
+		$this->load->view('View_Usuario',$dados);
+	}
+
 	public function retrieve() {
 		$dados = array(
 			'titulo' => 'Produtos',
 			'tela' => 'retrieve_produto',
 			'produtos' => $this->Produto_model->get_all()->result(),
-			'indicacoes' => $this->Indicacao_model->get_all()->result(),
+			'categorias' => $this->Categoria_model->get_all()->result(),
+		);
+
+		$this->load->view('View_Usuario',$dados);
+	}
+
+	public function retrieve_categoria() {
+		$dados = array(
+			'titulo' => 'Produtos',
+			'tela' => 'retrieve_produto',
+			'produtos' => $this->Produto_model->get_p_categoria($this->input->get('id'))->result(),
 			'categorias' => $this->Categoria_model->get_all()->result(),
 		);
 

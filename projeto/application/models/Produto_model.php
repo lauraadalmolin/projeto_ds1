@@ -35,6 +35,16 @@ class Produto_model extends CI_Model{
 		endif;
 	}
 
+	public function get_p_categoria($id=NULL) {
+		if ($id != NULL):
+			$this->db->order_by('id', 'DESC');
+			$this->db->where('id_categoria',$id);
+			return $this->db->get('produtos');
+		else:
+			return FALSE;
+		endif;
+	}
+
 	public function get_indicacoes($id=NULL) {
 		if ($id != NULL) {
 			$this->db->where('id_produto', $id);

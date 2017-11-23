@@ -26,32 +26,35 @@ echo 	"</form>";
 echo "</nav>";
 echo 				"<div class='card-body'>";
 echo 					"<div class='row'>";
-if (count($produtos) == 0) {
-echo 					"<div class='col-md-12'>";
-echo "<p class='alert alert-info text-center'>Não foi encontrado nenhum produto para a seguinte indicação. Experimente utilizar acentos e 'ç'.</p>";
-echo "</div>";
-} else {
-foreach ($produtos as $produto) {
-echo 					"<div class='col-md-2'>";
-echo 					"<a class='link-produtos' href='/CRUD_Produto/info/?id=".$produto->id."'><div class='card'>";
-echo 						"<img width='100%' class='card-img-top' src='../../uploads/produtos/".$produto->id.".jpg' alt='Card image cap'>";
-echo   						"<div class='card-body-produtos'>";
-if ($this->session->userdata('logado') == true) {
-echo  		   					"<h5 class='card-title text-center'>".$produto->nome."</h5>";
-echo 							"<div class='text-center'>";
-echo 							"<a href='/CRUD_Produto/update/?id=".$produto->id."'><img src='../../images/icons/edit1_green.png'>";
-echo 							"</img></a>";
-echo 							"<a href='/CRUD_Produto/delete/?id=".$produto->id."'><img src='../../images/icons/delete1_green.png'>";
-echo 							"</img></a>";
-echo 							"</div>";
-} else {
-echo  		   					"<h5 class='text-center link-produtos'>".$produto->nome."</h5>";
-}
-echo 							"</div>";
-echo 					"</div></div>";
-}
-}
-echo 				"</div>";
+?>
+				<div class='col-md-3' >
+	 					<div class='card'>
+	 						<?php
+							echo "<img width='70%' class='card-img-top' src='../../uploads/produtos/".$produto[0]->id.".jpg'></img>";
+							?>
+	 					</div>
+	 				</div>
+	 				<div class='col-md-9' >
+	 					<div class='card'>
+							<div class='card-header card-title'>
+	 							<h4 class='text-center'><?php echo $produto[0]->nome ?></h4>
+	 						</div>
+	 						<div class='card-body'>
+	 							<p><b>Informações</b></p>
+								<p class='spacing'><?php echo $produto[0]->descricao ?></p>
+								<p><b>Indicações</b></p>
+								<ul>
+									<?php
+										foreach ($indicacoes as $indicacao) {
+											echo "<li>".$indicacao->nome."</li>";
+										}
+									?>
+								</ul>
+							</div>
+	 					</div>
+	 				</div>
+<?php
+echo 					"</div>";
 echo 				"</div>";
 echo 			"</div>";
 echo 		"</div>";

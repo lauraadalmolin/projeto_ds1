@@ -12,7 +12,7 @@ echo "<div class='card-body'>";
     if (count($categorias) != 0 && count($indicacoes) != 0) {
         echo form_open_multipart('CRUD_Produto/create');
         if ($this->session->flashdata('sucesso')):
-            echo "<p class='alert alert-success'>".$this->session->flashdata('sucesso').'</p>';
+            echo "<p class='alert alert-info'>".$this->session->flashdata('sucesso').'</p>';
         endif;
         echo form_label('Nome: ');
         echo "<br>";

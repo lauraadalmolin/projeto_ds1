@@ -6,6 +6,7 @@ class Categoria_model extends CI_Model{
 		if($dados!=NULL):
 			$this->db->insert('categorias',$dados);
 			$id = $this->db->insert_id();
+			$this->session->set_flashdata('create_categoria','Categoria salva com sucesso!');
 			return $id;
 		endif;
 	}

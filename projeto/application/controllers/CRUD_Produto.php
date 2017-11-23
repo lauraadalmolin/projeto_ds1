@@ -58,13 +58,37 @@ class CRUD_Produto extends CI_Controller {
 	}
 
 	public function search() {
-		$dados = array(
-			'titulo' => 'Cadastro de Produto',
-			'tela' => 'create_produto',
-			'indicacoes' => $this->Indicacao_model->get_all()->result(),
+		$this->form_validation->set_rules('busca','BUSCA','trim|required|max_length[100]');
+		if($this->form_validation->run()==TRUE) {
+			$busca = $this->input->post('busca');
+			$dados = array(
+			'titulo' => 'Produtos',
+			'tela' => 'retrieve_produto',
+			'produtos' => $this->Produto_model->search($busca),
 			'categorias' => $this->Categoria_model->get_all()->result(),
 		);
+		$this->load->view('View_Usuario',$dados);
 
+		} else {
+			$dados = array(
+			'titulo' => 'Produtos',
+			'tela' => 'retrieve_produto',
+			'produtos' => $this->Produto_model->get_all()->result(),
+			'categorias' => $this->Categoria_model->get_all()->result(),
+			);
+			$this->load->view('View_Usuario',$dados);
+		}
+		
+	}
+
+	public function info() {
+		$dados = array(
+			'titulo' => 'Produtos',
+			'tela' => 'info_produto',
+			'produto' => $this->Produto_model->get_byid($this->input->get('id'))->result(),
+			'categorias' => $this->Categoria_model->get_all()->result(),
+			'indicacoes' => $this->Produto_model->get_indicacoes($this->input->get('id')) 
+		);
 		$this->load->view('View_Usuario',$dados);
 	}
 
@@ -75,7 +99,6 @@ class CRUD_Produto extends CI_Controller {
 			'produtos' => $this->Produto_model->get_all()->result(),
 			'categorias' => $this->Categoria_model->get_all()->result(),
 		);
-
 		$this->load->view('View_Usuario',$dados);
 	}
 
@@ -114,9 +137,9 @@ class CRUD_Produto extends CI_Controller {
         	redirect("/CRUD_Produto/retrieve");
         } else {
 			$dados = array(
-				'titulo' => 'CRUD &raquo; Update',
+				'titulo' => 'Atualizar Produto',
 				'tela' => 'update_produto',
-				'arr_indicacoes' => $this->Produto_model->get_indicacoes($this->input->get('id'))->result(),
+				'arr_indicacoes' => $this->Produto_model->get_indicacoes2($this->input->get('id'))->result(),
 				'produto' =>
 						 $this->Produto_model->get_byid($this->input->get('id'))->result(),
 				'indicacoes' => $this->Indicacao_model->get_all()->result(),

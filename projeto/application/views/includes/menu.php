@@ -20,6 +20,7 @@
 		} else {
       echo "<li class='nav-item'>" . anchor('CRUD_Informacoes/retrieve','Home', array('class' => 'nav-link')) . "</li>"; 
       echo "<li class='nav-item'>" . anchor('CRUD_Produto/retrieve','Produtos', array('class' => 'nav-link')) . "</li>";
+      echo "<li class='nav-item'>" . anchor('CRUD_Categoria/retrieve','Categorias', array('class' => 'nav-link')) . "</li>";
 			echo "<li class='nav-item'>" . anchor('Login_Logout/tela_login','Login', array('class' => 'nav-link')) . "</li>"; 
 		}
     	?>

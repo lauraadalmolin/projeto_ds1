@@ -28,7 +28,7 @@ echo 				"<div class='card-body'>";
 echo 					"<div class='row'>";
 if (count($produtos) == 0) {
 echo 					"<div class='col-md-12'>";
-echo "<p class='alert alert-info text-center'>Não foi encontrado nenhum produto para a seguinte indicação. Experimente utilizar acentos e 'ç'.</p>";
+echo "<p class='alert alert-info text-center'>Não foi encontrado nenhum produto para a seguinte indicação ou categoria. Se você estiver pesquisando, experimente utilizar acentos e 'ç'.</p>";
 echo "</div>";
 } else {
 foreach ($produtos as $produto) {

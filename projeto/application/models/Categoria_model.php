@@ -25,6 +25,12 @@ class Categoria_model extends CI_Model{
 	public function do_delete($dados=NULL) {
 		if ($dados!=NULL) {
 			$this->db->where('id_categoria', $dados['id']);
+			$arr = $this->db->get('produtos')->result();
+			foreach ($arr as $a) {
+				$this->db->where('id_produto', $a->id);
+				$this->db->delete('produto_indicacao');
+			}
+			$this->db->where('id_categoria', $dados['id']);
 			$this->db->delete('produtos');
 			$this->db->delete('categorias', $dados);
 		}
